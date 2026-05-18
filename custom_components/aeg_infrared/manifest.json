@@ -1,7 +1,7 @@
 {
   "domain": "aeg_infrared",
   "name": "AEG Infrared",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "codeowners": [],
   "config_flow": true,
   "dependencies": ["infrared"],

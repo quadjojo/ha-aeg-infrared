@@ -6,6 +6,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-17
+
+### Fixed
+- Integration failed to load on Home Assistant with
+  `ImportError: cannot import name 'Timing' from 'infrared_protocols'`.
+  `commands.py` imported a `Timing` symbol that the `infrared_protocols`
+  library never exposed — the real `Command.get_raw_timings()` contract
+  is a signed `list[int]` (positive = pulse µs, negative = space µs).
+  Drop the `Timing` import, return the signed-int list directly, and
+  apply the sign convention via a new `_sign_timings()` helper.
+- The downstream "blocking call to import_module" warning HA logged
+  alongside the `ImportError` was a side effect of the same failure
+  and disappears with the fix above.
+
 ## [0.1.0] - 2026-05-05
 
 ### Added
@@ -38,5 +52,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   brands proxy at `/api/brands/integration/aeg_infrared/icon.png` — no PR
   against the central brands repo is required.
 
-[Unreleased]: https://github.com/quadjojo/ha-aeg-infrared/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/quadjojo/ha-aeg-infrared/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/quadjojo/ha-aeg-infrared/releases/tag/v0.1.1
 [0.1.0]: https://github.com/quadjojo/ha-aeg-infrared/releases/tag/v0.1.0
