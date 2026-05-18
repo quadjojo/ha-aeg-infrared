@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question or general discussion
+    url: https://github.com/quadjojo/ha-aeg-infrared/discussions
+    about: For setup help, hardware compatibility questions, or anything that's not a bug or feature request.
+  - name: Home Assistant Infrared docs
+    url: https://www.home-assistant.io/integrations/infrared/
+    about: Read this first if your question is about the underlying HA Infrared building block, not this integration.

@@ -1,0 +1,56 @@
+name: Hardware report
+description: "Confirm a model works (or doesn't) — these reports are gold."
+title: "[hardware] "
+labels: ["hardware-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Hardware reports are how this project decides which models to list as
+        verified. If everything works, please still file one — it's not a
+        complaint, it's a data point.
+  - type: input
+    id: model
+    attributes:
+      label: AEG model
+      description: Exact model number printed on the unit.
+      placeholder: AXP26U558HW
+    validations:
+      required: true
+  - type: input
+    id: integration_version
+    attributes:
+      label: Integration version tested
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: result
+    attributes:
+      label: Result
+      options:
+        - Everything works
+        - Partial (some functions work, some don't)
+        - Nothing works (AC ignores all frames)
+    validations:
+      required: true
+  - type: checkboxes
+    id: verified
+    attributes:
+      label: Confirmed working
+      description: Tick what you actually tested on the physical unit.
+      options:
+        - label: Power on / off
+        - label: Cool mode
+        - label: Heat mode (heat-pump units only)
+        - label: Dry mode
+        - label: Fan-only mode
+        - label: Auto mode
+        - label: Target temperature changes
+        - label: Fan speed (low / medium / high)
+        - label: Swing toggle
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything notable
+      description: Quirks, workarounds, button labels on the original remote, anything that surprised you.

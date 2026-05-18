@@ -1,0 +1,22 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "This AEG air conditioner is already configured with this IR transmitter.",
+      "no_emitters": "No infrared transmitter entity found. Please set up the Infrared integration with your IR emitter first."
+    },
+    "step": {
+      "user": {
+        "data": {
+          "model": "Model",
+          "infrared_entity_id": "Infrared transmitter"
+        },
+        "data_description": {
+          "model": "The model of your AEG air conditioner.",
+          "infrared_entity_id": "The infrared transmitter entity used to send commands."
+        },
+        "description": "Pick your AEG model and the infrared transmitter that should radiate the commands.",
+        "title": "Set up AEG Infrared"
+      }
+    }
+  }
+}

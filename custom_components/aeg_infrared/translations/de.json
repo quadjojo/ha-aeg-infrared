@@ -1,0 +1,22 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "Diese AEG-Klimaanlage ist mit diesem IR-Sender bereits konfiguriert.",
+      "no_emitters": "Es wurde keine IR-Sender-Entity gefunden. Richte zuerst die Infrared-Integration mit deinem ESPHome-Sender ein."
+    },
+    "step": {
+      "user": {
+        "data": {
+          "model": "Modell",
+          "infrared_entity_id": "IR-Sender"
+        },
+        "data_description": {
+          "model": "Das Modell deiner AEG-Klimaanlage.",
+          "infrared_entity_id": "Die IR-Sender-Entity, die zum Senden der Befehle genutzt wird."
+        },
+        "description": "Wähle das Modell und den IR-Sender, der die Befehle ausstrahlen soll.",
+        "title": "AEG Infrarot einrichten"
+      }
+    }
+  }
+}

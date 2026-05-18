@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Syntax + manifest validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Validate every .py and .json
+        run: |
+          python - <<'PY'
+          import ast, json, pathlib, sys
+          errors: list[str] = []
+          for path in sorted(pathlib.Path(".").rglob("*.py")):
+              if any(part in {".git", ".venv", "__pycache__"} for part in path.parts):
+                  continue
+              try:
+                  ast.parse(path.read_text())
+              except SyntaxError as exc:
+                  errors.append(f"{path}: {exc}")
+          for path in sorted(pathlib.Path(".").rglob("*.json")):
+              if any(part in {".git", ".venv", "node_modules"} for part in path.parts):
+                  continue
+              try:
+                  json.loads(path.read_text())
+              except json.JSONDecodeError as exc:
+                  errors.append(f"{path}: {exc}")
+          if errors:
+              print("\n".join(errors))
+              sys.exit(1)
+          print("All Python and JSON files parse cleanly.")
+          PY
+
+      - name: Sanity-check the manifest
+        run: |
+          python - <<'PY'
+          import json, pathlib, sys
+          manifest = json.loads(
+              pathlib.Path("custom_components/aeg_infrared/manifest.json").read_text()
+          )
+          required = {"domain", "name", "version", "config_flow",
+                      "dependencies", "iot_class", "integration_type",
+                      "requirements"}
+          missing = required - manifest.keys()
+          if missing:
+              print(f"manifest.json missing keys: {sorted(missing)}")
+              sys.exit(1)
+          if "infrared" not in manifest["dependencies"]:
+              print("manifest.json must declare 'infrared' as a dependency")
+              sys.exit(1)
+          version = manifest["version"]
+          if not version or len(version.split(".")) < 2:
+              print(f"manifest.json version looks wrong: {version!r}")
+              sys.exit(1)
+          print(f"manifest.json OK ({manifest['domain']} v{version}).")
+          PY

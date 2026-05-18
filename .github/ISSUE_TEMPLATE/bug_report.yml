@@ -1,0 +1,69 @@
+name: Bug report
+description: Something doesn't work the way the README says it should.
+title: "[bug] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a report. Please fill in as much
+        as you can — context that looks irrelevant to you is often the key.
+  - type: input
+    id: model
+    attributes:
+      label: AEG model
+      description: Exact model number printed on the unit (e.g. `AXP26U558HW`).
+      placeholder: AXP26U558HW
+    validations:
+      required: true
+  - type: input
+    id: integration_version
+    attributes:
+      label: Integration version
+      description: Visible in HACS or in `manifest.json`.
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: input
+    id: ha_version
+    attributes:
+      label: Home Assistant version
+      placeholder: "2026.4.1"
+    validations:
+      required: true
+  - type: input
+    id: emitter
+    attributes:
+      label: Infrared emitter / proxy device
+      description: Hardware + firmware that exposes the `infrared.*` entity (e.g. ESPHome XIAO IR Mate on ESPHome 2026.4.0).
+    validations:
+      required: true
+  - type: textarea
+    id: what_happened
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what did you get instead?
+    validations:
+      required: true
+  - type: textarea
+    id: traceback
+    attributes:
+      label: Home Assistant log excerpt
+      description: |
+        Settings → System → Logs. Filter by `aeg_infrared`. Paste the full
+        traceback if there is one.
+      render: shell
+  - type: textarea
+    id: timings
+    attributes:
+      label: Generated timings (optional)
+      description: |
+        Useful when the encoding is suspect. Run this in `python_script` or
+        a dev container with HA loaded:
+        ```python
+        from custom_components.aeg_infrared.commands import AegAcCommand, AegAcState
+        cmd = AegAcCommand(state=AegAcState(mode="cool", temperature=22, fan="auto", swing="off"))
+        for t in cmd.get_raw_timings()[:12]:
+            print(t.high_us, t.low_us)
+        ```
+      render: text

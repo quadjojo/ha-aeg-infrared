@@ -1,0 +1,13 @@
+{
+  "domain": "aeg_infrared",
+  "name": "AEG Infrared",
+  "version": "0.1.0",
+  "codeowners": [],
+  "config_flow": true,
+  "dependencies": ["infrared"],
+  "documentation": "https://github.com/quadjojo/ha-aeg-infrared",
+  "issue_tracker": "https://github.com/quadjojo/ha-aeg-infrared/issues",
+  "iot_class": "assumed_state",
+  "integration_type": "device",
+  "requirements": ["pyhvac==0.1.6"]
+}

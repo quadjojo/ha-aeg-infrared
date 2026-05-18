@@ -1,0 +1,28 @@
+name: Feature request
+description: Suggest a capability that isn't there yet.
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What can you not do today that you'd like to?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: How could this look? UI? Service? Config option?
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: checkboxes
+    id: willingness
+    attributes:
+      label: Are you willing to send a PR for this?
+      options:
+        - label: Yes, I'll work on it
+        - label: I can help test

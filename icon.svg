@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AEG Infrared">
+  <title>AEG Infrared</title>
+  <rect width="64" height="64" rx="12" fill="#1565c0"/>
+  <g stroke="#ffffff" stroke-linecap="round" fill="none">
+    <g transform="translate(46 18)" stroke-width="2.6">
+      <line x1="0" y1="-8" x2="0" y2="8"/>
+      <line x1="-6.9" y1="-4" x2="6.9" y2="4"/>
+      <line x1="-6.9" y1="4" x2="6.9" y2="-4"/>
+      <path d="M -2.6 -7 L 0 -8 L 2.6 -7 M -2.6 7 L 0 8 L 2.6 7"/>
+      <path d="M -7.4 -2.4 L -8 -4.7 L -5.4 -5.5 M 7.4 2.4 L 8 4.7 L 5.4 5.5"/>
+      <path d="M 7.4 -2.4 L 8 -4.7 L 5.4 -5.5 M -7.4 2.4 L -8 4.7 L -5.4 5.5"/>
+    </g>
+    <g transform="translate(15 49)" stroke-width="3.6">
+      <path d="M 0 0 A 10 10 0 0 1 7.07 -7.07"/>
+      <path d="M 0 0 A 18 18 0 0 1 12.73 -12.73"/>
+      <path d="M 0 0 A 26 26 0 0 1 18.38 -18.38"/>
+    </g>
+    <circle cx="15" cy="49" r="2.4" fill="#ffffff"/>
+  </g>
+</svg>
