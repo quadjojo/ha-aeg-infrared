@@ -9,7 +9,7 @@ import logging
 from dataclasses import dataclass
 from typing import Any
 
-from infrared_protocols import Command
+from infrared_protocols.commands import Command
 
 _LOGGER = logging.getLogger(__name__)
 

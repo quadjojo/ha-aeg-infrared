@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-05-17
+
+### Fixed
+- Integration still failed to load on Home Assistant with
+  `ImportError: cannot import name 'Command' from 'infrared_protocols'`.
+  The library dropped the top-level re-export; `Command` now lives at
+  `infrared_protocols.commands` only. Import from the submodule path
+  directly, which works across every 2.x → 5.x release of the library.
+
 ## [0.1.1] - 2026-05-17
 
 ### Fixed
@@ -52,6 +61,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   brands proxy at `/api/brands/integration/aeg_infrared/icon.png` — no PR
   against the central brands repo is required.
 
-[Unreleased]: https://github.com/quadjojo/ha-aeg-infrared/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/quadjojo/ha-aeg-infrared/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/quadjojo/ha-aeg-infrared/releases/tag/v0.1.2
 [0.1.1]: https://github.com/quadjojo/ha-aeg-infrared/releases/tag/v0.1.1
 [0.1.0]: https://github.com/quadjojo/ha-aeg-infrared/releases/tag/v0.1.0
